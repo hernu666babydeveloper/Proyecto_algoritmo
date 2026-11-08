@@ -2,9 +2,6 @@
 from  PyQt6.QtWidgets import QLabel, QDialog, QPushButton, QLineEdit, QMessageBox, QWidget
 from PyQt6.QtGui import  QFont
 
-
-
-
 class registro2(QDialog):
     
     def __init__(self):
