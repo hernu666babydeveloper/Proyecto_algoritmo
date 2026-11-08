@@ -92,3 +92,30 @@ print(mi_correo.enviado)
 
 mi_correo.enviar_correo()
 print(mi_correo.enviado)
+
+
+# herencia 
+#   class NombreSubClase (nombreClaseSuperior)
+#
+#   class ClaseBase:
+#       Cuerpo de la clase base
+#   
+#   class DerivadoCLase (ClaseBase):
+#       Cuerpo de clase derivada
+
+
+class pokemon:
+    def __init__(self,nombre,tipo):
+        self.nombre = nombre
+        self.tipo = tipo
+    def descripcion(self):
+        return '{} es un pokemon de tipo: {}'.format(self.nombre,self.tipo)
+class pikachu (pokemon):
+    def ataque(self,tipoataque):
+        return '{} tipo de ataque: {}'.format(self.nombre, tipoataque)
+class charmander(pokemon):
+    def ataque(self,tipoataque):
+        return '{} tipo de ataque: {}'.format(self.nombre, tipoataque)
+
+nuevo_pokemon = pikachu('boby','electrico')
+print(nuevo_pokemon.descripcion())
