@@ -9,3 +9,7 @@ conductividad electrica
 potencial de hidrogeno/PH
 
 nitrogeno total/fosforo total #/Opcional
+
+coliformes
+
+turbiedad
