@@ -2,8 +2,13 @@
 
 import sys
 from  PyQt6.QtWidgets import (QApplication, QWidget, QPushButton, QGridLayout, QTextEdit)
-
-
+import operator
+operation = { #diccionario de operaciones
+    "+": operator.add,
+    "-": operator.sub,
+    "*": operator.mul,
+    "/": operator.truediv
+}
 class m_win(QWidget):
     def __init__(self):
         super().__init__()
@@ -18,7 +23,7 @@ class m_win(QWidget):
 
     def inicio(self):
         self.setGeometry(100,100,600,400)
-        self.setMaximumSize(600, 400)
+        #self.setMaximumSize(600, 400)
         self.setWindowTitle(" ")
         self.interfaz()
         self.show()
@@ -37,7 +42,7 @@ class m_win(QWidget):
         boton_8= QPushButton("7"); boton_8.clicked.connect(self.ing_datos)
         boton_9= QPushButton("8"); boton_9.clicked.connect(self.ing_datos)
         boton_10= QPushButton("9"); boton_10.clicked.connect(self.ing_datos)
-        boton_pun= QPushButton(","); boton_pun.clicked.connect(self.ing_datos)
+        boton_pun= QPushButton("."); boton_pun.clicked.connect(self.ing_datos)
         boton_00= QPushButton("00"); boton_00.clicked.connect(self.ing_datos)
 
         #boton operacion 
@@ -47,9 +52,9 @@ class m_win(QWidget):
         bott_mul= QPushButton("*") ;   bott_mul.clicked.connect(self.ins_opr)
 
         #botones de accion 
-        bott_eliminartodo =  QPushButton("CE");   bott_mul.clicked.connect(self.borrartodo)
-        bott_borrar= QPushButton ("<-");   bott_mul.clicked.connect(self.borraruno)
-        bott_igual = QPushButton("=");   bott_mul.clicked.connect(self.igual)
+        bott_eliminartodo =  QPushButton("CE");   bott_eliminartodo.clicked.connect(self.borrartodo)
+        bott_borrar= QPushButton ("<-");   bott_borrar.clicked.connect(self.borraruno)
+        bott_igual = QPushButton("=");   bott_igual.clicked.connect(self.igual)
 
         self.main_grid = QGridLayout()
 
@@ -110,11 +115,33 @@ class m_win(QWidget):
         self.operador= ""
         self.pointer_flag = "1"
         self.aft_equal= False
-        self.pantalla.setText("")
+        self.pantalla.setText(" ")
     def  borraruno(self):
-        pass
+        if self.aft_equal:
+            self.borrartodo()
+        elif self.pointer_flag== "1":
+            self.frst_val =self.frst_val[:-1] #toma la lista sin el primer valor 0:-1
+            self.pantalla.setText(self.frst_val)
+        else:
+            self.scnd_val= self.scnd_val[:-1] 
+            self.pantalla.setText(self.frst_val)
+
     def igual(self):
-        pass
+        #try:
+        resultado =(operation[self.operador](float(self.frst_val), float(self.scnd_val)))
+        #except ZeroDivisionError as e:
+            #resultado= "error"
+            #self.pantalla.setText(resultado)
+        if resultado == int(resultado) or not(str(resultado)):
+            resultado=int(resultado)
+        
+        resultado=str(resultado)
+        #realiza la operacion con el (operador), siempre tiene que ser un str sino error
+        self.pantalla.setText(resultado)#aca se presenta el error
+        self.scnd_val = ""
+        self.frst_val =  resultado
+        self.aft_equal = True
+
 if __name__ == "__main__" :
     app= QApplication(sys.argv)
     wndw = m_win() 
