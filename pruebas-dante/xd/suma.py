@@ -97,7 +97,7 @@ print(mi_correo.enviado)
 # herencia 
 #   class NombreSubClase (nombreClaseSuperior)
 #
-#   class ClaseBase:
+#   class ClaseBase(Nombre de subclase ):
 #       Cuerpo de la clase base
 #   
 #   class DerivadoCLase (ClaseBase):
