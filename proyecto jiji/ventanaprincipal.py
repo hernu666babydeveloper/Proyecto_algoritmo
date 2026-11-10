@@ -117,7 +117,7 @@ class M_win(QWidget):
             
         else:
             self.v6_input.setDisabled(True)
-            self.v6_input = None
+            self.v6_input = None #eror 
 
 
       
