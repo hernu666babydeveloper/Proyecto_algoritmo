@@ -1,8 +1,0 @@
-
-import sys 
-from PyQt6.QtWidgets import QApplication, QLabel, QVBoxLayout, QHBoxLayout, QPushButton, QWidget, QLineEdit, QCheckBox
-
-
-class mainwin(QWidget):
-    pass
-

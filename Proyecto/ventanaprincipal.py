@@ -1,5 +1,5 @@
 import sys 
-from PyQt6.QtWidgets import QApplication, QLabel, QVBoxLayout, QHBoxLayout, QPushButton, QWidget, QLineEdit, QCheckBox, QMessageBox
+from PyQt6.QtWidgets import QApplication, QLabel, QVBoxLayout, QHBoxLayout, QPushButton, QWidget, QLineEdit, QCheckBox, QMessageBox, qN
 from ventana import mainwin
 
 class M_win(QWidget):
@@ -17,6 +17,7 @@ class M_win(QWidget):
     
       
     def inter(self):
+       
        pmessage=  QLabel(" ingresa los datos")
        botton_crear = QPushButton("calcular ICA")
        botton_crear.clicked.connect(self.start_calwindow)
@@ -136,6 +137,7 @@ class M_win(QWidget):
             self.v6_input.setDisabled(True)
 
     def start_calwindow (self):
+
         variables=[]
         variables_formulas=[]
         variables_indices=["v1","v2","v3","v4","v5","v6"]
@@ -169,7 +171,8 @@ class M_win(QWidget):
                 QMessageBox.warning(self, "error", f"la variable {i} no es un numero /n ingrese de nuevo el campo ", 
                  QMessageBox.StandardButton.Close, QMessageBox.StandardButton.Close)
                 variables_formulas= []
-        segundaventana()
+        mainwin()
+        
                 
              
    
