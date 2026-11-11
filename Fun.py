@@ -112,12 +112,19 @@ class Funciones():
             elif len(fila) == 6:
                 return self.seis(fila)
 
-    def GTVR (self,,lista,IOD,ISST,IDQO,ICE,IPH,metodo):
-        IICA = [IOD,ISST,IDQO,ICE,IPH,metodo]
-        V=[]
+    def GTVR (self,lista,IOD,ISST,IDQO,ICE,IPH,metodo):
+        IICA = [IOD,ISST,IDQO,ICE,IPH,metodo];
+        V=[];
         if len(lista) == 6:
             for i in range(IICA):
-                append(V[])
+                V.addend(0.17*IICA[i])
+            for i in range(V):
+                ICA=ICA+V[i]        
+        else:
+            for i in range(IICA):
+                V.addend(0.2*IICA[i])
+            for i in range(V):
+                ICA=ICA+V[i]
             
 
 
