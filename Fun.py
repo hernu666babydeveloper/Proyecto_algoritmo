@@ -22,6 +22,12 @@
 #    def __init__(self,):
 #        self.ica =1+1
 
+import math
+
+I=[]
+W_1=0.2
+W_2=0.17
+
 class Funciones():
     #construcctor
     def __init__(self,archivo_entrada="ejemplo.txt",archivo_salida="G_resultado.txt"):
@@ -39,9 +45,75 @@ class Funciones():
                     todas_las_filas.append(lista_numeros)
         return todas_las_filas
 
+    def Funn(self):
+        datos= self.lec_d()
+        fila = datos[0]
 
-    def Funn(Self):
-        print("hola, muchacho aqui van a ir todas las funciones")
+        #Lista de datos
+        #I_OD = fila[0]
+        #I_SST = fila[1]
+        #I_DQO = fila[2]
+        #I_CE = fila[3]
+        #I_PH = fila[4]
+        #I_N = fila[5]
+
+        #calculos
+        def I_OD(self):
+            if fila[0]<100: OD=1-(1-0.01*fila[0])
+            else:   OD=1-(1-0.01*fila[0]-1)
+            return OD
+
+        def I_SST(self):
+            if fila[1]<=4.5:     SST=1
+            elif fila[1]>=320:    SST=0
+            else:   SST=1-(-0.02+0.003*fila[1])
+            return SST
+
+        def I_DQO(self):
+            if fila[2]>80:   DQO=0.125
+            elif fila[2]<=20:   DQO=0.91
+            elif 25<fila[2]<=40:    DQO=0.51   
+            elif 20<fila[2]<=25:   DQO=0.71
+            elif 40<fila[2]<=80:   DQO=0.26
+            return DQO
+
+        def I_CE(self):
+            CE=1-10**(-3.26+1.34* math.log10(fila[3]))
+            CE=max(0, min(1,CE))
+            return CE
+
+        def I_PH(self):
+            if fila[3]>11:
+                PH=0.1
+            elif fila[3]<4:
+                PH=0.1
+            elif 7<fila[3]<=8:
+                PH=1
+            elif 8<fila[3]<=11:
+                1*math.e**((PH-8)*-5187742)
+            elif 4<=fila[3]<=7:
+                PH=0.02628419*math.e**(PH*0.520025)
+            return PH
+
+        #decision de calculo
+        def seis (self):
+            if fila[5]<=5 or NT>20:  NT = 0.15
+            if 15<=fila[5]<=20:  NT = 0.8
+            if 5<fila[5]<=10:  NT = 0.35
+            if 10<fila[5]<15:  NT = 0.6
+            return NT
+
+            #for i in range(6):
+                
+
+        def cinco (self,fila):
+            fila.addend(0)
+        
+        def metodo(self,fila):
+            if len(fila) == 5:
+                return self.cinco(fila)
+            elif len(fila) == 6:
+                return self.seis(fila)
 
 
 
