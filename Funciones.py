@@ -18,9 +18,9 @@
 #  )
 
 
-class Funciones:
-    def __init__(self,):
-        self.ica =1+1
+#class Funciones:
+#    def __init__(self,):
+#        self.ica =1+1
 
 
 "W_" = []
@@ -113,6 +113,3 @@ class Funciones:
 
 "descripion" = [ "buena", "aceptable", "regular", "mala", "muy mala",]
 "colores" = ["azul", "verde", "amarillo", "naranja", "rojo",]
- 
-#    
-
