@@ -58,18 +58,18 @@ class Funciones():
         #I_N = fila[5]
 
         #calculos
-        def I_OD(self):
+        def IOD(self):
             if fila[0]<100: OD=1-(1-0.01*fila[0])
             else:   OD=1-(1-0.01*fila[0]-1)
             return OD
 
-        def I_SST(self):
+        def ISST(self):
             if fila[1]<=4.5:     SST=1
             elif fila[1]>=320:    SST=0
             else:   SST=1-(-0.02+0.003*fila[1])
             return SST
 
-        def I_DQO(self):
+        def IDQO(self):
             if fila[2]>80:   DQO=0.125
             elif fila[2]<=20:   DQO=0.91
             elif 25<fila[2]<=40:    DQO=0.51   
@@ -77,12 +77,12 @@ class Funciones():
             elif 40<fila[2]<=80:   DQO=0.26
             return DQO
 
-        def I_CE(self):
+        def ICE(self):
             CE=1-10**(-3.26+1.34* math.log10(fila[3]))
             CE=max(0, min(1,CE))
             return CE
 
-        def I_PH(self):
+        def IPH(self):
             if fila[3]>11:
                 PH=0.1
             elif fila[3]<4:
@@ -101,10 +101,7 @@ class Funciones():
             if 15<=fila[5]<=20:  NT = 0.8
             if 5<fila[5]<=10:  NT = 0.35
             if 10<fila[5]<15:  NT = 0.6
-            return NT
-
-            #for i in range(6):
-                
+            return NT                
 
         def cinco (self,fila):
             fila.addend(0)
@@ -114,6 +111,14 @@ class Funciones():
                 return self.cinco(fila)
             elif len(fila) == 6:
                 return self.seis(fila)
+
+    def GTVR (self,,lista,IOD,ISST,IDQO,ICE,IPH,metodo):
+        IICA = [IOD,ISST,IDQO,ICE,IPH,metodo]
+        V=[]
+        if len(lista) == 6:
+            for i in range(IICA):
+                append(V[])
+            
 
 
 
