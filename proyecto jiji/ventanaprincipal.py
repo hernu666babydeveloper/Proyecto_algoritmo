@@ -1,6 +1,6 @@
 import sys 
-from PyQt6.QtWidgets import QApplication, QLabel, QVBoxLayout, QHBoxLayout, QPushButton, QWidget, QLineEdit, QCheckBox
-
+from PyQt6.QtWidgets import QApplication, QLabel, QVBoxLayout, QHBoxLayout, QPushButton, QWidget, QLineEdit, QCheckBox, QMessageBox
+from ventana import mainwin
 
 class M_win(QWidget):
     def __init__(self):
@@ -19,6 +19,7 @@ class M_win(QWidget):
     def inter(self):
        pmessage=  QLabel(" ingresa los datos")
        botton_crear = QPushButton("calcular ICA")
+       botton_crear.clicked.connect(self.start_calwindow)
                  #ek comando size sale error, solo es para ver el valor
         #espacios vacios
        void= QLabel("")
@@ -30,30 +31,44 @@ class M_win(QWidget):
        void6 = QLabel("")
        #valores mostrados            
        #                      / input de valores
-       value_1 = QLabel("V1")
+       value_1 = QLabel("OD")
+       value_1.setFixedWidth(30)
        self.v1_input =  QLineEdit()
-       value_1_unidad= QLabel("un")
+       value_1_unidad= QLabel("%") 
+       value_1_unidad.setFixedWidth(30)
 
-       value_2 =  QLabel("V2")
+       value_2 =  QLabel("SST")
+       value_2.setFixedWidth(30)
        self.v2_input = QLineEdit()
+      
        value_2_unidad= QLabel("un")
+       value_2_unidad.setFixedWidth(30)
 
        value_3 =  QLabel("V3")
+       value_3.setFixedWidth(30)
        self.v3_input = QLineEdit()
        value_3_unidad= QLabel("un")
+       value_3_unidad.setFixedWidth(30)
 
        value_4 =  QLabel(" V4")
+       value_4.setFixedWidth(30)
        self.v4_input = QLineEdit()
        value_4_unidad= QLabel("un")
+       value_4_unidad.setFixedWidth(30)
 
        value_5 =  QLabel("V5")
+       value_5.setFixedWidth(30)
        self.v5_input = QLineEdit()
+      
        value_5_unidad= QLabel("un")
+       value_5_unidad.setFixedWidth(30)
 
-       value_6 =  QLabel("V6")
+       value_6 =  QLabel("NT/NP")
+       value_6.setFixedWidth(30)
        self.v6_input = QLineEdit()
        self.v6_input.setDisabled(True)
-       value_6_unidad= QLabel("un")
+       value_6_unidad= QLabel("mg/l , mg/l")
+       value_6_unidad.setFixedWidth(30)
        #checkbot 
        self.check_box= QCheckBox("¿hay v6?",self)
        self.check_box.clicked.connect(self.true_v6)
@@ -111,14 +126,73 @@ class M_win(QWidget):
        self.vp_layout.addLayout(self.h_boton_layout)
        self.setLayout(self.vp_layout)
 
+
+        #boton 
+        
     def true_v6(self, clicked): #
         if  clicked:
-            self.v6_input.setDisabled(False)
-            
+            self.v6_input.setDisabled(False) 
         else:
             self.v6_input.setDisabled(True)
-            self.v6_input = None #eror 
 
+    def start_calwindow (self):
+        variables=[]
+        variables_formulas=[]
+        variables_indices=["v1","v2","v3","v4","v5","v6"]
+        v1_listan = self.v1_input.text()
+        v2_listan =self.v2_input.text()  #! [1, 2, 3, 4, 5, 6]
+        v3_listan=self.v3_input.text()
+        v4_listan =self.v4_input.text()
+        v5_listan =self.v5_input.text()
+        
+        variables.append( v1_listan )
+        variables.append( v2_listan )
+        variables.append( v3_listan )
+        variables.append( v4_listan )
+        variables.append( v5_listan )
+       
+        #revisa si hay 6 variable
+       
+       
+       
+        if not self.true_v6:
+         v6_lista =self.v6_input.text()
+         variables.append(v6_lista)
+      
+        for i in variables:
+            
+            try: 
+                
+                nuevalista= float(i)
+                variables_formulas.append(nuevalista)     
+            except ValueError: 
+                QMessageBox.warning(self, "error", f"la variable {i} no es un numero /n ingrese de nuevo el campo ", 
+                 QMessageBox.StandardButton.Close, QMessageBox.StandardButton.Close)
+                variables_formulas= []
+        segundaventana()
+                
+             
+   
+    
+           
+    #def bottonfunciona(self):
+     #   calculos_path="calculos.txt"
+      #  with open (calculos_path, "a+"):  # a+ agrega  , open abre ese "archivo" , with verifica q esto se ejecute bien 
+       #     if not self.true_v6: 
+        #     self.v1_input.text()
+         #    self.v2_input.text()
+        #   self.v3_input.text()
+         #    self.v4_input.text()
+          #   self.v5_input.text()
+           # else: 
+            #    self.v1_input.text()
+             #   self.v2_input.text() 
+              #  self.v3_input.text()
+               # self.v4_input.text()
+                #self.v5_input.text()
+                #self.v6_input.text()
+    
+   
 
       
       
