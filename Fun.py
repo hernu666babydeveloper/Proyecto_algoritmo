@@ -22,9 +22,41 @@
 #    def __init__(self,):
 #        self.ica =1+1
 
+class Funciones():
+    #construcctor
+    def __init__(self,archivo_entrada="ejemplo.txt",archivo_salida="G_resultado.txt"):
+        self.archivo_entrada = archivo_entrada
+        self.archivo_salida = archivo_salida
 
-"W_" = []
-"I_ij" = []
+    #lectura de datos
+    def lec_d(self):
+        todas_las_filas=[]
+        with open(self.archivo_entrada, "r", encoding="utf-8") as archivo:
+            for linea in archivo:
+                linea_limpia = linea.strip()
+                if linea_limpia:
+                    lista_numeros = [float(x) for x in linea_limpia.split(",")]
+                    todas_las_filas.append(lista_numeros)
+        return todas_las_filas
+
+
+    def Funn(Self):
+        print("hola, muchacho aqui van a ir todas las funciones")
+
+
+
+    #salida de datos
+    def salida_datos(self,lista_resultados):
+        with open(self.archivo_salida, "w", encoding="utf-8") as archivo:
+            for fila in lista_resultados:
+                linea_texto = ",".join(map(str,fila))
+                archivo.write(linea_texto + "\n")
+
+#procesador= Funciones("ejemplo.txt","G_resultado.txt")
+#lec_d = procesador.lec_d()
+#print("primera  = ", lec_d[0])
+
+
 
 
 
@@ -111,5 +143,5 @@
 #   )
 
 
-"descripion" = [ "buena", "aceptable", "regular", "mala", "muy mala",]
-"colores" = ["azul", "verde", "amarillo", "naranja", "rojo",]
+#"descripion" = [ "buena", "aceptable", "regular", "mala", "muy mala",]
+#"colores" = ["azul", "verde", "amarillo", "naranja", "rojo",]
