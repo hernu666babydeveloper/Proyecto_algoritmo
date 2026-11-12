@@ -114,5 +114,5 @@ class Funciones():
                 archivo.write(linea_texto + "\n")
 
 procesador=Funciones(); lista_completa= procesador.Funn()
-#print("estoy cansao: ", lista_completa)
+print("estoy cansao: ", lista_completa)
 procesador.salida_datos([lista_completa])
