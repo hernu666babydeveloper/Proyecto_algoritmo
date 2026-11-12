@@ -106,9 +106,6 @@ class Funciones():
         lista_completa = [round(x, 3) for x in IICA] + [round(ICA, 3)]
         return lista_completa
             
-
-
-
     #salida de datos
     def salida_datos(self,lista_resultados):
         with open(self.archivo_salida, "w", encoding="utf-8") as archivo:
@@ -117,5 +114,5 @@ class Funciones():
                 archivo.write(linea_texto + "\n")
 
 procesador=Funciones(); lista_completa= procesador.Funn()
-print("estoy cansao: ", lista_completa)
+#print("estoy cansao: ", lista_completa)
 procesador.salida_datos([lista_completa])
