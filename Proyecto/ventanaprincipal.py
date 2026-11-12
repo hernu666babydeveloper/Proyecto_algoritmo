@@ -1,5 +1,5 @@
 import sys 
-from PyQt6.QtWidgets import QApplication, QLabel, QVBoxLayout, QHBoxLayout, QPushButton, QWidget, QLineEdit, QCheckBox, QMessageBox, qN
+from PyQt6.QtWidgets import QApplication, QLabel, QVBoxLayout, QHBoxLayout, QPushButton, QWidget, QLineEdit, QCheckBox, QMessageBox, QGroupBox
 from ventana import mainwin
 
 class M_win(QWidget):
@@ -139,8 +139,8 @@ class M_win(QWidget):
     def start_calwindow (self):
 
         variables=[]
+        variables_error=["v1", "v2"]
         variables_formulas=[]
-        variables_indices=["v1","v2","v3","v4","v5","v6"]
         v1_listan = self.v1_input.text()
         v2_listan =self.v2_input.text()  #! [1, 2, 3, 4, 5, 6]
         v3_listan=self.v3_input.text()
@@ -154,13 +154,11 @@ class M_win(QWidget):
         variables.append( v5_listan )
        
         #revisa si hay 6 variable
-       
-       
-       
         if not self.true_v6:
          v6_lista =self.v6_input.text()
          variables.append(v6_lista)
-      
+
+        #margen de error 
         for i in variables:
             
             try: 
@@ -168,32 +166,21 @@ class M_win(QWidget):
                 nuevalista= float(i)
                 variables_formulas.append(nuevalista)     
             except ValueError: 
-                QMessageBox.warning(self, "error", f"la variable {i} no es un numero /n ingrese de nuevo el campo ", 
+                QMessageBox.warning(self, "error", f"{i} no es un numero \n ingrese de nuevo el campo ", 
                  QMessageBox.StandardButton.Close, QMessageBox.StandardButton.Close)
                 variables_formulas= []
-        mainwin()
+                return
+        if len(variables_formulas) == 5 or len(variables_formulas) == 6:
+            self.ola  = mainwin()
+            self.ola.show()
         
+
                 
-             
+    
    
     
            
-    #def bottonfunciona(self):
-     #   calculos_path="calculos.txt"
-      #  with open (calculos_path, "a+"):  # a+ agrega  , open abre ese "archivo" , with verifica q esto se ejecute bien 
-       #     if not self.true_v6: 
-        #     self.v1_input.text()
-         #    self.v2_input.text()
-        #   self.v3_input.text()
-         #    self.v4_input.text()
-          #   self.v5_input.text()
-           # else: 
-            #    self.v1_input.text()
-             #   self.v2_input.text() 
-              #  self.v3_input.text()
-               # self.v4_input.text()
-                #self.v5_input.text()
-                #self.v6_input.text()
+  
     
    
 
