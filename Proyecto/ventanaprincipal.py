@@ -1,6 +1,8 @@
 import sys 
 from PyQt6.QtWidgets import QApplication, QLabel, QVBoxLayout, QHBoxLayout, QPushButton, QWidget, QLineEdit, QCheckBox, QMessageBox, QGroupBox
 from ventana import mainwin
+from Fun import Funciones
+import json
 
 class M_win(QWidget):
     def __init__(self):
@@ -154,25 +156,35 @@ class M_win(QWidget):
         variables.append( v5_listan )
        
         #revisa si hay 6 variable
-        if not self.true_v6:
+        if self.check_box.isChecked():
          v6_lista =self.v6_input.text()
          variables.append(v6_lista)
 
         #margen de error 
+        a=1
         for i in variables:
             
             try: 
-                
+                a=a+1
                 nuevalista= float(i)
                 variables_formulas.append(nuevalista)     
             except ValueError: 
-                QMessageBox.warning(self, "error", f"{i} no es un numero \n ingrese de nuevo el campo ", 
+                QMessageBox.warning(self, "error", f"{a} no es un numero \n ingrese de nuevo el campo ", 
                  QMessageBox.StandardButton.Close, QMessageBox.StandardButton.Close)
                 variables_formulas= []
                 return
         if len(variables_formulas) == 5 or len(variables_formulas) == 6:
-            self.ola  = mainwin()
-            self.ola.show()
+            try:
+                with open("variables.json", "w") as file: #write
+                    json.dump(variables_formulas, file)   #
+            except FileNotFoundError as exept:
+                QMessageBox.warning(self, "error", "no se que paso lol",
+                QMessageBox.StandardButton.Close,
+                QMessageBox.StandardButton.Close)
+            
+            self.Otraventana = mainwin()
+            self.show()
+
         
 
                 

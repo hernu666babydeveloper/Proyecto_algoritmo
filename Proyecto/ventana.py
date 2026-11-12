@@ -1,5 +1,6 @@
 
 from PyQt6.QtWidgets import QApplication, QLabel, QVBoxLayout, QHBoxLayout, QPushButton, QWidget, QLineEdit, QCheckBox, QGroupBox
+import json
 
 
 
@@ -12,6 +13,9 @@ class mainwin(QWidget):
         self.interfaz2()
         self.show()
     def interfaz2(self):
+        # with open("G_resultado.json", "r")
+        void= QLabel("")
+
         self.cajita1 = QGroupBox("Calculos de ICA")
 
         self.value1_ic = QLabel("v1")
@@ -69,11 +73,21 @@ class mainwin(QWidget):
         self.h_layout_3.addWidget(self.value6_ic)
         self.h_layout_3.addWidget(self.res6)
         self.h_layout_3.addWidget(self.unidad6)
+        #
 
+
+    
+        #
         self.v_layout= QVBoxLayout()
-        self.cajita1.setLayout(self.h_layout_1) #cajita es  con set layout
-        self.cajita1.setLayout(self.h_layout_2)
-        self.cajita1.setLayout(self.h_layout_3)
-        self.v_layout.addWidget(self.cajita1)
-
-        self.setLayout(self.v_layout)
+        self.biglayout= QVBoxLayout()
+        self.v_layout.addLayout(self.h_layout_1) #cajita es  con set layout
+        self.v_layout.addLayout(self.h_layout_2)
+        self.v_layout.addLayout(self.h_layout_3)
+        self.cajita1.setLayout(self.v_layout)
+        self.cajita1.setFixedWidth(400)
+        self.cajita1.move(0,400)
+        #self.cajita1.setLayout(self.v_layout)
+        self.biglayout.addWidget(self.cajita1)
+        #self.biglayout.addWidget(void)
+        self.biglayout.addWidget(void)
+        self.setLayout(self.biglayout)
