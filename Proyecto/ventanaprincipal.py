@@ -173,7 +173,7 @@ class M_win(QWidget):
             
             try: 
                 a=a+1
-                nuevalista= float(i)
+                nuevalista= float(i.replace(",","."))
                 if abs(nuevalista) ==  nuevalista:
                     variables_formulas.append(nuevalista)     
 

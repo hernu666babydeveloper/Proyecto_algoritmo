@@ -146,7 +146,7 @@ class mainwin(QDialog):
         elif self.lista[6] <=0.70 and self.lista[6] >=0.51:
             comentarios_jij.setText(" El ICA es Regular \n no se recomienda el uso de estas aguas, requieren tratamiento")
         elif self.lista[6] <=0.50 and self.lista[6] >=0.26:
-            comentarios_jij.setText("ola")
+            comentarios_jij.setText("El ICA es Malo \n no se recomienda el uso de estas aguas, requiere tratamiento urgente")
         elif self.lista[6] <=0.26 and self.lista[6] >=0:
             comentarios_jij.setText("El ICA es Muy malo \n La fuente está severamente contaminada y representa un riesgo para la salud y el ecosistema")
         comentarios_jij.setReadOnly(True)
