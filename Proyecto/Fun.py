@@ -10,13 +10,14 @@ class Funciones():
     def lec_d(self):
         todas_las_filas=[]
         with open(self.archivo_entrada, "r", encoding="utf-8") as archivo:
-
+          
            todas_las_filas=json.load(archivo)
            """ for linea in archivo:
                 linea_limpia = linea.strip()
                 if linea_limpia:
                     lista_numeros = [float(x) for x in linea_limpia.split(",")]
                     todas_las_filas.append(lista_numeros)"""
+         
         return todas_las_filas
 
     #funciones
@@ -117,5 +118,4 @@ class Funciones():
                 archivo.write(linea_texto + "\n")"""
 
 procesador=Funciones(); lista_completa= procesador.Funn()
-print("estoy cansao: ", lista_completa)
 procesador.salida_datos([lista_completa])
